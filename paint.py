@@ -8,7 +8,7 @@ pygame.init()
 r = 255
 g = 0
 b = 0
-
+t = 30
 windown = pygame.display.set_mode((1500,1500))
 
 
@@ -36,7 +36,7 @@ while windown_open:
 
 
 
-    mouse = pygame.mouse.get_pos()
+    mouse = pygame.mouse.get_pos(True,False,False)
     comand = pygame.key.get_pressed()
     clock.tick(1000)
 
@@ -44,8 +44,16 @@ while windown_open:
         if event.type == pygame.QUIT:
             windown_open = False
 
-    if event.type == pygame.MOUSEBUTTONDOWN:
-        pygame.draw.circle(windown, (r,g,b), (mouse),30)
+    if comand[pygame.K_c]:
+        pygame.draw.circle(windown, (r,g,b), (mouse),t)
+    if comand[pygame.K_e]:
+        pygame.draw.circle(windown, (0,0,0), (mouse), t)
+
+
+    if comand[pygame.K_a]:
+        t +=1
+    if comand[pygame.K_m] and t >= 2:
+        t -=1
 
     if comand[pygame.K_F1] and r < 255:
         r+=1
