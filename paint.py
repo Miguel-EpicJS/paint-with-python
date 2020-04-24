@@ -9,6 +9,11 @@ r = 255
 g = 0
 b = 0
 t = 30
+
+
+
+
+
 windown = pygame.display.set_mode((1500,1500))
 
 
@@ -25,10 +30,13 @@ txt = "Color".format(r,g,b)
 fonte=pygame.font.get_default_font()
 fontesys=pygame.font.SysFont(fonte, 60)
 
+x = 0
+y = 0
 
 while windown_open:
-    pygame.display.flip()
-
+    #pygame.display.flip()
+    x =pygame.mouse.get_pos(x)
+    y =pygame.mouse.get_pos(y)
 
 
     txttela = fontesys.render(txt, 1, (r,g,b))
@@ -36,9 +44,9 @@ while windown_open:
 
 
 
-    mouse = pygame.mouse.get_pos(True,False,False)
+    mouse = pygame.mouse.get_pos()
     comand = pygame.key.get_pressed()
-    clock.tick(1000)
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -46,37 +54,43 @@ while windown_open:
 
     if comand[pygame.K_c]:
         pygame.draw.circle(windown, (r,g,b), (mouse),t)
+
+    if comand[pygame.K_l]:
+        pygame.draw.line(windown, (r,g,b), (mouse), (mouse), t)
+
+
     if comand[pygame.K_e]:
         pygame.draw.circle(windown, (0,0,0), (mouse), t)
 
 
-    if comand[pygame.K_a]:
+    if comand[pygame.K_KP_PLUS]:
         t +=1
-    if comand[pygame.K_m] and t >= 2:
+    if comand[pygame.K_KP_MINUS] and t >= 2:
         t -=1
 
-    if comand[pygame.K_F1] and r < 255:
+    if comand[pygame.K_KP1] and r < 255:
         r+=1
 
-    if comand[pygame.K_F2] and g < 255:
+    if comand[pygame.K_KP2] and g < 255:
         g+=1
 
 
-    if comand[pygame.K_F3] and b < 255:
+    if comand[pygame.K_KP3] and b < 255:
         b+=1
 
 
-    if comand[pygame.K_F4] and r > 1:
+    if comand[pygame.K_KP4] and r > 1:
         r-=1
 
 
-    if comand[pygame.K_F5] and r > 1:
+    if comand[pygame.K_KP5] and r > 1:
         g-=1
 
 
-    if comand[pygame.K_F6] and r > 1:
+    if comand[pygame.K_KP6] and r > 1:
         b-=1
 
 
-    #pygame.display.update()
+    pygame.display.update()
 pygame.quit()
+
