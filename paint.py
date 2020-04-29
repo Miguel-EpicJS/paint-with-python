@@ -2,23 +2,18 @@ import pygame
 from pygame.locals import *
 
 pygame.init()
-
-
-
+#Cores
 r = 255
 g = 0
 b = 0
 t = 30
 
 
+windown = pygame.display.set_mode((1500,1500))#cria a sala
 
 
 
-windown = pygame.display.set_mode((1500,1500))
-
-
-
-pygame.display.set_caption("Paint")
+pygame.display.set_caption("Paint")#coloca um nome
 
 clock = pygame.time.Clock()
 
@@ -34,7 +29,7 @@ x = 0
 y = 0
 
 while windown_open:
-    #pygame.display.flip()
+    
     x =pygame.mouse.get_pos(x)
     y =pygame.mouse.get_pos(y)
 
